@@ -1,6 +1,6 @@
 <?php
 /**
- *  CLAS (Collaborative Lecture Annotation System) is a video annotation tool 
+ *  OVAL (Online Video Annotation for Learning) is a video annotation tool
  *  that allows users to make annotations on videos uploaded to the platform.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
@@ -330,7 +330,7 @@ $(document).ready(function() {
 <!-- <div id="univbranding"><img src="icons/LearnngTchngUnt_12_01.png"></img></div>  -->
 
 <!-- <div id="mydiv">
-        <p><b>CLAS has been collaboratively developed with support from University of British Columbia, University of South Australia, University of Sydney and University of New South Wales.</b></p> <p><b>Support for the software and research has been provided by the Australian Government Office for Learning and Teaching.</b></p>
+        <p><b>OVAL has been collaboratively developed with support from University of British Columbia, University of South Australia, University of Sydney and University of New South Wales.</b></p> <p><b>Support for the software and research has been provided by the Australian Government Office for Learning and Teaching.</b></p>
 </div>  -->
 
 </body>

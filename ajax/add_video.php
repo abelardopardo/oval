@@ -1,6 +1,6 @@
 <!--
 /**
- *  CLAS (Collaborative Lecture Annotation System) is a video annotation tool 
+ *  OVAL (Online Video Annotation for Learning) is a video annotation tool
  *  that allows users to make annotations on videos uploaded to the platform.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
@@ -83,15 +83,15 @@ $jQuery.getJSON('http://gdata.youtube.com/feeds/api/videos/VA770wpLX-Q?v=2&alt=j
     $media = new media();
 
     // delete hosted video as well if the deleting user is the one uploaded
-    // the kaltura deletion must happen before the CLAS database deletion for owner check to work
+    // the kaltura deletion must happen before the OVAL database deletion for owner check to work
     if ($media->userOwnsMedia($videoID, $userID)) {
-        // TODO: this was commented out so that CLAS deletions becomes "soft delete"
+        // TODO: this was commented out so that OVAL deletions becomes "soft delete"
         // implement more comprehensive soft deletion later, where deleted videos are
-        // marked as deleted within CLAS, and get reassigned to the system-admin group.
+        // marked as deleted within OVAL, and get reassigned to the system-admin group.
         //
         // The system admin group will then have a "hard delete" command in video
         // management. This arrangement allow departments who administer their own
-        // CLAS instance to do their own video management.
+        // OVAL instance to do their own video management.
         //
         // deleteVideoOnKaltura($videoID);
     }

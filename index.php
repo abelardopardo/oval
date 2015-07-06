@@ -2,7 +2,7 @@
 
 <?php
 /**
- *  CLAS (Collaborative Lecture Annotation System) is a video annotation tool 
+ *  OVAL (Online Video Annotation for Learning) is a video annotation tool
  *  that allows users to make annotations on videos uploaded to the platform.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
@@ -90,9 +90,9 @@ if (! browserSupported()) {
 <h1>Browser version not supported</h1>
     <?php
     if ("IE" == $browser) {
-        print "To use CLAS you must upgrade to IE 9.";    
+        print "To use OVAL you must upgrade to IE 9.";    
     } else {
-        print "<p>To use CLAS you must upgrade to the lastest version of <?php$browser?>.</p>";
+        print "<p>To use OVAL you must upgrade to the lastest version of <?php$browser?>.</p>";
         print "current version:$version<br />";
     }
  	?>
@@ -1219,7 +1219,7 @@ if ($student['point_one']){
 
 
 <div id="mydiv">
-        <p><b>Please run CLAS in Firefox, Chrome and Safari. IE is NOT supported.</b></p>
+        <p><b>Please run OVAL in Firefox, Chrome and Safari. IE is NOT supported.</b></p>
 </div>
 
 
@@ -1229,7 +1229,7 @@ if ($student['point_one']){
 <?php 
 		if (isset($noCourses) && $noCourses != "") {
 ?>
-			alert("You are not currently enrolled in any course that uses CLAS.\n\nIf this is in error, please contact the An ZHAO at an.zhao@unisa.edu.au or your instructor.");
+			alert("You are not currently enrolled in any course that uses OVAL.\n\nIf this is in error, please contact the An ZHAO at an.zhao@unisa.edu.au or your instructor.");
 <?php 
 		}
 ?>

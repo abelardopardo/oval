@@ -232,7 +232,7 @@ maintain the value of quality, pass 0 for bandwidth. The default value is 16384.
 					'<br /><input type="button" value="Open in Player" onclick="playEntryInPlayer (\'' + addedEntry.entryId + '\');return false;" />' + 
 					' || <input type="button" value="Close Player" onclick="closeKdp();return false;" />', false);
 
-            // at this point insert video data into CLAS db media table
+            // at this point insert video data into OVAL db media table
             // - need to read position of playback of associated video
             // - it would be best if video can automatically be placed in a folder on Kaltura
             //

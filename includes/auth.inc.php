@@ -152,7 +152,7 @@ function endSession()
     session_destroy();
 }
 
-// Post condition: returns the user ID within CLAS, based on the unique ID from Shib
+// Post condition: returns the user ID within OVAL, based on the unique ID from Shib
 function getCurrentClasUserId() {
 	global $_SERVER;
 	

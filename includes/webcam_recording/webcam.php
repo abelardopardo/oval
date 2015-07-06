@@ -145,7 +145,7 @@
 		writeToLog ('recording saved');
 	        setEntryID (addedEntry);
 
-	        // TODO: at this point insert video data into CLAS db media table
+	        // TODO: at this point insert video data into OVAL db media table
 	        // - need to read position of playback of associated video
 	        // - it would be best if video can automatically be placed in a folder on Kaltura
 	        //

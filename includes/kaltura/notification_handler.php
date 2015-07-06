@@ -3,7 +3,7 @@
  * Kaltura sends notifications for media related events (entry_added, entry_updated, entry_deleted, etc.).
  * When an "entry_updated" event occurs we can create the media entry in our database but we have to determine 
  * which one. This is done by reading and parsing the 'tags' meta-data of the uploaded video to determine
- * which version of CLAS "live" or "dev" uploaded the video that triggered the notification. 
+ * which version of OVAL "live" or "dev" uploaded the video that triggered the notification. 
  */
 
 require_once (dirname(__FILE__) . "/kaltura_notification_client.php");
@@ -38,7 +38,7 @@ writeToLog("in Entry update\n");
 
 /* 
  * add row to media table for the appropriate database by reading 'tags' of uploaded video
- * to determine the version of CLAS ie. 'clas_dev_server' or 'clas_prod_server'
+ * to determine the version of OVAL ie. 'clas_dev_server' or 'clas_prod_server'
  */
 function addMedia($data)
 {
@@ -63,7 +63,7 @@ function addMedia($data)
     } elseif ("clas_prod_server" == $serverVersion) {
         $db = "annotation_tool";
     } elseif ("clas_prod2_server" == $serverVersion) {
-        // TODO: switch name when music finishes using CLAS
+        // TODO: switch name when music finishes using OVAL 
         $db = "prod_annotation_tool";
         // ("clas_demo_server" == $tags) 
     } else {

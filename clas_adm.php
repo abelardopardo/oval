@@ -1,6 +1,6 @@
 <?php
 /**
- *  CLAS (Collaborative Lecture Annotation System) is a video annotation tool 
+ *  OVAL (Online Video Annotation for Learning) is a video annotation tool
  *  that allows users to make annotations on videos uploaded to the platform.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
@@ -28,10 +28,10 @@
 
 // tdang 2013
 // An ZHAO 2014
-// CLAS SYSTEM ADMINISTRATION TOOL (for tech-adept admin users only, 
+// OVAL SYSTEM ADMINISTRATION TOOL (for tech-adept admin users only, 
 // should be hidden from instructors and students)
 
-$CLAS_ADM_TOOL_LAST_UPDATE = "Sept 07, 2013";
+$OVAL_ADM_TOOL_LAST_UPDATE = "Sept 07, 2013";
 
 include_once(dirname(__FILE__) . "/includes/global_deploy_config.php");
 include_once(dirname(__FILE__) . "/includes/common.inc.php");
@@ -708,8 +708,8 @@ function handleAddFromCSV() {
 				$hashedTAIDs[] = hashUserID($ID);
 			}
 			
-			$oldHashedInstructors = getInstructorsInClass_FROM_CLAS_DB($classID, $dbConnection);
-			$oldHashedTAs = getTAsInClass_FROM_CLAS_DB($classID, $dbConnection);
+			$oldHashedInstructors = getInstructorsInClass_FROM_OVAL_DB($classID, $dbConnection);
+			$oldHashedTAs = getTAsInClass_FROM_OVAL_DB($classID, $dbConnection);
 			
 			$alreadyExistingInstructors = array_intersect($hashedInstructorIDs, $oldHashedInstructors);
 			$alreadyExistingTAs = array_intersect($hashedTAIDs, $oldHashedTAs);
@@ -720,7 +720,7 @@ function handleAddFromCSV() {
 				$csvStudentListArrayHashed[] = hashUserID($studentID);
 			}
 			
-			$oldHashedStudents = getStudentsInClass_FROM_CLAS_DB($classID, $dbConnection);
+			$oldHashedStudents = getStudentsInClass_FROM_OVAL_DB($classID, $dbConnection);
 			
 			$oldHashedStudents = (is_null($oldHashedStudents)) ? array() : $oldHashedStudents;
 			$oldHashedInstructors = (is_null($oldHashedInstructors)) ? array() : $oldHashedInstructors;
@@ -782,23 +782,23 @@ function handleAddFromCSV() {
 				print "<div style=\"min-width:1024px;text-align:center;font-size:75%\">";
 				print "<div style=\"margin-left:auto;margin-right:auto;border:1px solid gray;height:200px;width:1030px;white-space:pre-wrap;overflow:scroll;\">";
 				
-				$instructorsCLASIDs = array();
-				$tasCLASIDs = array();
+				$instructorsOVALIDs = array();
+				$tasOVALIDs = array();
 				if (!empty($instructorsToAdd)) {
-					$instructorsCLASIDs = createUsers($instructorsToAdd, INSTRUCTOR, $dbConnection, true);
-					UTIL_setDefaultUISettings($instructorsCLASIDs);
+					$instructorsOVALIDs = createUsers($instructorsToAdd, INSTRUCTOR, $dbConnection, true);
+					UTIL_setDefaultUISettings($instructorsOVALIDs);
 				}
 				
 				if (!empty($tasToAdd)) {
-					$tasCLASIDs = createUsers($tasToAdd, TA, $dbConnection, true);
-					UTIL_setDefaultUISettings($tasCLASIDs);
+					$tasOVALIDs = createUsers($tasToAdd, TA, $dbConnection, true);
+					UTIL_setDefaultUISettings($tasOVALIDs);
 				}
 				
-				addInstructorAndTAs($classID, $instructorsCLASIDs, $tasCLASIDs, $dbConnection);
-				UTIL_addToEveryoneGroup($instructorsCLASIDs, $classID, $dbConnection, INSTRUCTOR);
-				UTIL_addToInstructorAndTAGroup($instructorsCLASIDs, $classID, $dbConnection, INSTRUCTOR);
-				UTIL_addToEveryoneGroup($tasCLASIDs, $classID, $dbConnection, TA);
-				UTIL_addToInstructorAndTAGroup($tasCLASIDs, $classID, $dbConnection, TA);
+				addInstructorAndTAs($classID, $instructorsOVALIDs, $tasOVALIDs, $dbConnection);
+				UTIL_addToEveryoneGroup($instructorsOVALIDs, $classID, $dbConnection, INSTRUCTOR);
+				UTIL_addToInstructorAndTAGroup($instructorsOVALIDs, $classID, $dbConnection, INSTRUCTOR);
+				UTIL_addToEveryoneGroup($tasOVALIDs, $classID, $dbConnection, TA);
+				UTIL_addToInstructorAndTAGroup($tasOVALIDs, $classID, $dbConnection, TA);
 				
 				print "</div></div><br/><br/>";
 				
@@ -806,14 +806,14 @@ function handleAddFromCSV() {
 				print "<div style=\"min-width:1024px;text-align:center;font-size:75%\">";
 				print "<div style=\"margin-left:auto;margin-right:auto;border:1px solid gray;height:200px;width:1030px;white-space:pre-wrap;overflow:scroll;\">";
 				
-				$studentsCLASIDs = array();
+				$studentsOVALIDs = array();
 				if (!empty($studentsToAdd)) {
-					$studentsCLASIDs = createUsers($studentsToAdd, STUDENT, $dbConnection, true);
-					UTIL_setDefaultUISettings($studentsCLASIDs);
+					$studentsOVALIDs = createUsers($studentsToAdd, STUDENT, $dbConnection, true);
+					UTIL_setDefaultUISettings($studentsOVALIDs);
 				}
 				
-				addStudents($classID, $studentsCLASIDs, $dbConnection);
-				UTIL_addToEveryoneGroup($studentsCLASIDs, $classID, $dbConnection);
+				addStudents($classID, $studentsOVALIDs, $dbConnection);
+				UTIL_addToEveryoneGroup($studentsOVALIDs, $classID, $dbConnection);
 				
 				print "</div></div><br/><br/>";
 
@@ -940,8 +940,8 @@ function handleDropFromCSV() {
 				$hashedTAIDs[] = hashUserID($ID);
 			}
 
-			$oldHashedInstructors = getInstructorsInClass_FROM_CLAS_DB($classID, $dbConnection);
-			$oldHashedTAs = getTAsInClass_FROM_CLAS_DB($classID, $dbConnection);
+			$oldHashedInstructors = getInstructorsInClass_FROM_OVAL_DB($classID, $dbConnection);
+			$oldHashedTAs = getTAsInClass_FROM_OVAL_DB($classID, $dbConnection);
 			$oldHashedInstructors = (is_null($oldHashedInstructors)) ? array() : $oldHashedInstructors;
 			$oldHashedTAs = (is_null($oldHashedTAs)) ? array() : $oldHashedTAs;
 
@@ -954,7 +954,7 @@ function handleDropFromCSV() {
 				$csvStudentListArrayHashed[] = hashUserID($studentID);
 			}
 
-			$oldHashedStudents = getStudentsInClass_FROM_CLAS_DB($classID, $dbConnection);
+			$oldHashedStudents = getStudentsInClass_FROM_OVAL_DB($classID, $dbConnection);
 			$oldHashedStudents = (is_null($oldHashedStudents)) ? array() : $oldHashedStudents;
 			$alreadyExistingStudents = array_intersect($csvStudentListArrayHashed, $oldHashedStudents);
 
@@ -1149,7 +1149,7 @@ function handleRemoveCourse() {
 		$session, $department, $courseNo, $sectionNo, $season);
 		
 		if ($commandState == CommandStates::Preview) {
-			$oldEnrolled = getStudentsInClass_FROM_CLAS_DB($classID, $dbConnection);
+			$oldEnrolled = getStudentsInClass_FROM_OVAL_DB($classID, $dbConnection);
 			
 			UTIL_excludeTestAccounts($oldEnrolled);
 			
@@ -1169,7 +1169,7 @@ function handleRemoveCourse() {
 			if ($commandState == CommandStates::Execute || $commandState == CommandStates::PreviewThenExecute) {
 				print "<div style=\"min-width:1024px;text-align:center;font-size:75%\">";
 				print "<div style=\"margin-left:auto;margin-right:auto;border:1px solid gray;height:200px;width:1030px;white-space:pre-wrap;overflow:scroll;\">";
-				removeCourse_FROM_CLAS_DB($classID, $dbConnection);
+				removeCourse_FROM_OVAL_DB($classID, $dbConnection);
 				print "</div></div>";
 				
 				print("<br/><b>STOP! Please check the database query outputs to make sure that everything is
@@ -1491,11 +1491,11 @@ function printOutputPageFooting($commandState, $className="ClassName Uninitializ
 	}
 	
 	if ($commandState == CommandStates::Execute || $commandState == CommandStates::PreviewThenExecute) {
-		$exitMessage = "$commandText <b>$className</b>! Return to CLAS admin interface";
+		$exitMessage = "$commandText <b>$className</b>! Return to OVAL admin interface";
 	} else if ($commandState == CommandStates::Error) {
 		$exitMessage = "Errors Found: Please return and check your input parameters";
 	} else {
-		$exitMessage = "Cancel and return to CLAS admin interface";
+		$exitMessage = "Cancel and return to OVAL admin interface";
 	}
 	
 	print "<a href=\"clas_adm.php\" onclick=\"confirmation()\">$exitMessage</a>";
@@ -1534,7 +1534,7 @@ function printCourseInfo(	$commandState, $className, $configFolderName,
 	} else if ($command == Commands::DropFromCSV) {
 		print("<b>Dropping users (incremental update) out of Course:</b>");
 	} else if ($command == Commands::CheckEnroll) {
-		print("<b>Showing Enrollment Info (in CLAS) for Course:</b>");
+		print("<b>Showing Enrollment Info (in OVAL) for Course:</b>");
 	} else {
 		print("<b>Course to be Updated:</b>");
 	}
@@ -1600,7 +1600,7 @@ function handleImportFromSIS() {
 			updateClassEnrollment($classID, $dbConnection, $command, $commandState);
 		} else {
 			print("<br/><span style=\"color:red;font-weight:bold\">
-				FATAL ERROR! This deployment of CLAS - '" . strtoupper($DEPLOYMENT_NAME) . 
+				FATAL ERROR! This deployment of OVAL - '" . strtoupper($DEPLOYMENT_NAME) . 
 					"' - may not query SIS for the course code '$department'.<br/>
 				If this course code does belong to your department and we missed it during initial setup, please email 
 					<a href='mailto:arts.helpdesk@ubc.ca'>arts.helpdesk@ubc.ca</a>
@@ -1651,7 +1651,7 @@ function createUsers($IDs, $role, $dbConn, $isIDsHashed=false, $firstName=null, 
 		$resultText = ($result == false) ? ("<div style=\"color:red;\">failed, error: " . mysql_error($dbConn) . "</div>") : ("<div style=\"color:green;\">ok, retVal: " . mysql_result($result, 0) . "</div>");
 		print "<br/>Debug Info: $query - Result: $resultText<br/>"; 
 		
-        // get the CLAS userID of the last insert of this hashed university ID
+        // get the OVAL userID of the last insert of this hashed university ID
         if (1 == mysql_num_rows($result)) {
            	$userID = mysql_result($result, 0);
         } else {
@@ -1688,7 +1688,7 @@ function UTIL_printQueryResultNicely($query="Query Not Provided", $result, $dbCo
 	print "<br />query:$query<br />result: $resultText<br/>";
 }
 
-function getStudentsInClass_FROM_CLAS_DB($classID, $dbConn)
+function getStudentsInClass_FROM_OVAL_DB($classID, $dbConn)
 {
     $query = <<<EOT
 SELECT DISTINCT u.hash_user_id 
@@ -1707,7 +1707,7 @@ EOT;
     return $hashUserIDs;
 }
 
-function getInstructorsInClass_FROM_CLAS_DB($classID, $dbConn)
+function getInstructorsInClass_FROM_OVAL_DB($classID, $dbConn)
 {
 	$query = <<<EOT
 SELECT DISTINCT u.hash_user_id
@@ -1728,7 +1728,7 @@ EOT;
 	return $hashUserIDs;
 }
 
-function getTAsInClass_FROM_CLAS_DB($classID, $dbConn)
+function getTAsInClass_FROM_OVAL_DB($classID, $dbConn)
 {
 	$query = <<<EOT
 SELECT DISTINCT u.hash_user_id
@@ -1749,7 +1749,7 @@ EOT;
 	return $hashUserIDs;
 }
 
-function removeCourse_FROM_CLAS_DB($classID, $dbConn) {
+function removeCourse_FROM_OVAL_DB($classID, $dbConn) {
 	$users = new users();
 	$groupIDs = $users->getGroupsByClassID($classID);
 	
@@ -2079,7 +2079,7 @@ function updateClassEnrollment($classID, $dbConn, $command, $commandState, $csvS
 
     $isCourseNo4Character = strlen($courseNo) == 4;
     
-    $oldEnrolled = getStudentsInClass_FROM_CLAS_DB($classID, $dbConn);
+    $oldEnrolled = getStudentsInClass_FROM_OVAL_DB($classID, $dbConn);
 
     $oldEnrolled = (empty($oldEnrolled)) ? array() : $oldEnrolled;
     $oldEnrolledTotal = count($oldEnrolled);    
@@ -2103,7 +2103,7 @@ function updateClassEnrollment($classID, $dbConn, $command, $commandState, $csvS
 			)
 		) {
 			print("<br/><span style=\"color:red;font-weight:bold\">
-					STOP! This CLAS course does not appear to be a standard UBC course!
+					STOP! This OVAL course does not appear to be a standard UBC course!
 					<br/>
 					The enrollment list cannot be queried automatically from SIS.
 					<br/>
@@ -2170,7 +2170,7 @@ function updateClassEnrollment($classID, $dbConn, $command, $commandState, $csvS
 	    $compareViewMinWidth = $compareViewWidth - 10;
 		print "<div style=\"min-width:$compareViewMinWidth" . "px;text-align:center;\">";
 		print "<br/><fieldset style=\"border:0px;margin:0px;padding:0px;margin-left:auto;margin-right:auto;width:$compareViewWidth\">";
-		print "<div style=\"float:left;\">Existing enrollment list in CLAS (hashed): <b>$oldEnrolledTotal students</b><br />";
+		print "<div style=\"float:left;\">Existing enrollment list in OVAL (hashed): <b>$oldEnrolledTotal students</b><br />";
 		
 		if ($commandState == CommandStates::Preview) {
 			DEBUG_printSimpleArray($oldEnrolled);
@@ -2248,7 +2248,7 @@ function updateClassEnrollment($classID, $dbConn, $command, $commandState, $csvS
 		} else {
 
 			print("<span style=\"font-weight:bold\">
-				STOP! Please check the results of the database updates to CLAS
+				STOP! Please check the results of the database updates to OVAL 
 				<br>
 				to make sure that all the results are <span style=\"color:green\">green</span>
 				</span>
@@ -2340,7 +2340,7 @@ function bulkImportUI($msg, $dbConn)
     if (! empty($classes)) {
 ?>
   <fieldset style="width:600px;border-radius:6px;"><div id="msg"><?=$msg?></div>
-  <h4 id="detailed_ui_title_bulk_import" class="detailed_ui_title">Bulk import enrollment list for courses already in CLAS</h4>
+  <h4 id="detailed_ui_title_bulk_import" class="detailed_ui_title">Bulk import enrollment list for courses already in OVAL</h4>
   
   <div style="margin:0px;padding:0px;border:0px" class="detailed_ui" id="detailed_ui_bulk_import">
   <form name="import-enrollment-list" id="import-enrollment-list" method="post" action="<?=$_SERVER['PHP_SELF']?>">
@@ -2394,7 +2394,7 @@ function addUsersUI($msg, $dbConn)
     if (! empty($classes)) {
 ?>
   <fieldset style="width:600px;border-radius:6px;"><div id="msg"><?=$msg?></div>
-  <h4 id="detailed_ui_title_add_users" class="detailed_ui_title">Add instructors/TA's/students to a course in CLAS</h4>
+  <h4 id="detailed_ui_title_add_users" class="detailed_ui_title">Add instructors/TA's/students to a course in OVAL</h4>
   
   <div style="margin:0px;padding:0px;border:0px" class="detailed_ui" id="detailed_ui_add_users">
   <form name="add_users_form" id="add_users_form" method="post" action="<?=$_SERVER['PHP_SELF']?>">
@@ -2452,7 +2452,7 @@ function dropUsersUI($msg, $dbConn)
     if (! empty($classes)) {
 ?>
   <fieldset style="width:600px;border-radius:6px;"><div id="msg"><?=$msg?></div>
-  <h4 id="detailed_ui_title_drop_users" class="detailed_ui_title">Drop instructors/TA's/students from a course in CLAS</h4>
+  <h4 id="detailed_ui_title_drop_users" class="detailed_ui_title">Drop instructors/TA's/students from a course in OVAL</h4>
   
   <div style="margin:0px;padding:0px;border:0px" class="detailed_ui" id="detailed_ui_drop_users">
   <form name="drop_users_form" id="drop_users_form" method="post" action="<?=$_SERVER['PHP_SELF']?>">
@@ -2508,7 +2508,7 @@ function dropCourseUI($msg, $dbConn)
     if (! empty($classes)) {
 ?>
   <fieldset style="width:600px;border-radius:6px;"><div id="msg"><?=$msg?></div>
-  <h4 id="detailed_ui_title_drop_course" class="detailed_ui_title">Remove course (created by mistake, wrong name, etc.) from CLAS</h4>
+  <h4 id="detailed_ui_title_drop_course" class="detailed_ui_title">Remove course (created by mistake, wrong name, etc.) from OVAL</h4>
   
   <div style="margin:0px;padding:0px;border:0px" class="detailed_ui" id="detailed_ui_drop_course">
   <form name="drop_course_form" method="post" action="<?=$_SERVER['PHP_SELF']?>">
@@ -2589,8 +2589,8 @@ function lifeCycleManagementUI($msg, $dbConn)
 ?>
 
 <?php 
-$pageHeader = strtoupper($DEPLOYMENT_NAME) . " - CLAS admin tool (last updated $CLAS_ADM_TOOL_LAST_UPDATE)";
-$pageTitle = strtoupper($DEPLOYMENT_NAME) . " - CLAS admin tool";
+$pageHeader = strtoupper($DEPLOYMENT_NAME) . " - OVAL admin tool (last updated $OVAL_ADM_TOOL_LAST_UPDATE)";
+$pageTitle = strtoupper($DEPLOYMENT_NAME) . " - OVAL admin tool";
 
 ?>
 
@@ -2783,7 +2783,7 @@ input[type="text"]:disabled {background-color:#E0E0E0;}
 
 <?php
 print "<span style=\"color:red\">With great power comes great responsibility... (Uncle Ben to Spiderman)</span><br/>
-			This tool gives you sysadmin power on CLAS server <b>\"$configFolderName\"</b>, and lets you update or delete<br/>
+			This tool gives you sysadmin power on OVAL server <b>\"$configFolderName\"</b>, and lets you update or delete<br/>
 			class lists that may be in use. Please always <b>check every parameters</b> of your commands<br/>
 			carefully before proceeding, and <b>stop to verify the result</b> preview at checkpoints<br/>
 			as the commands are in progress.<br/><br/>";
@@ -2796,7 +2796,7 @@ addUsersUI($msg, $dbConnection);
 dropUsersUI($msg, $dbConnection);
 ?>
   <fieldset style="width:600px;border-radius:6px;">
-  <h4 id="detailed_ui_title_add_course" class="detailed_ui_title">Add a course to CLAS (and add instructor and TA accounts)</h4>
+  <h4 id="detailed_ui_title_add_course" class="detailed_ui_title">Add a course to OVAL (and add instructor and TA accounts)</h4>
   
   <div style="margin:0px;padding:0px;border:0px" class="detailed_ui" id="detailed_ui_add_course">
   <? if (! empty($errors)): ?>
@@ -2821,13 +2821,13 @@ dropUsersUI($msg, $dbConnection);
     <option value="S">S</option>
   </select>
   <br/>
-  <label for="is_SIS_course">Is this a standard SIS course or a custom CLAS deployment?</label>
+  <label for="is_SIS_course">Is this a standard SIS course or a custom OVAL deployment?</label>
   <br/>
   <input name="is_SIS_course" id="is_SIS_course_yes" type="radio" value="yes" checked/>
   	<label for="is_SIS_course_yes">&nbsp;SIS Course</label>
   	<br/>
   <input name="is_SIS_course" id="is_SIS_course_no" type="radio" value="no"/>
-  	<label for="is_SIS_course_no">&nbsp;Custom Course in CLAS</label>
+  	<label for="is_SIS_course_no">&nbsp;Custom Course in OVAL</label>
   	<br/> 
   <br />
   <fieldset style="margin-left:auto;margin-right:auto;width:400px;border-radius:6px" id="course_input_SIS" class="course_input">

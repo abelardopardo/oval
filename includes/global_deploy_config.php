@@ -2,7 +2,7 @@
 // Don't change this often unless you need to deploy new instance
 // Put "preprocessor" parameters here
 
-// DEPLOY CONFIG: add a new entry here if you are making a new instance of CLAS
+// DEPLOY CONFIG: add a new entry here if you are making a new instance of OVAL 
 //$DEPLOYMENT_NAME = "prod";
 //$DEPLOYMENT_NAME = "dev";
 //$DEPLOYMENT_NAME = "demo"; 
@@ -19,7 +19,7 @@ $webFolderName = "";
 switch ($DEPLOYMENT_NAME) {
 	case "dev":
 		$logoutURL              = "CUSTOMIZE_SECURE_SHIBBOLETH_LOGOUTPATH";
-		$serverVersion          = "CLAS_dev_server";
+		$serverVersion          = "OVAL_dev_server";
 		$configFolderName 		= "dev";
 		$applicationURL         = "YourURL";
 		$webFolderName			= "dev";
@@ -34,7 +34,7 @@ switch ($DEPLOYMENT_NAME) {
 		break;
 	case "demo":
 		$logoutURL              = "YourLogoutURL";
-		$serverVersion          = "CLAS_demo_server";	
+		$serverVersion          = "OVAL_demo_server";	
 		$configFolderName 		= "demo";
 		$applicationURL         = "YouURL";
 		$webFolderName			= "demo";
@@ -46,7 +46,7 @@ switch ($DEPLOYMENT_NAME) {
 		break;
 	case "prod":
 		$logoutURL              = "CUSTOMIZE_SECURE_SHIBBOLETH_LOGOUTPATH";
-		$serverVersion          = "CLAS_prod_server";
+		$serverVersion          = "OVAL_prod_server";
 		$configFolderName 		= "prod";
 		$applicationURL         = "CUSTOMIZE_SECURE_SHIBBOLETH_ROOTPATH";
 		$webFolderName			= "clas";
@@ -58,7 +58,7 @@ switch ($DEPLOYMENT_NAME) {
 		break;
 	case "medclas":
 		$logoutURL              = "CUSTOMIZE_SECURE_SHIBBOLETH_LOGOUTPATH";
-		$serverVersion          = "CLAS_medclas_server";
+		$serverVersion          = "OVAL_medclas_server";
 		$configFolderName 		= "medclas";
 		$applicationURL         = "CUSTOMIZE_SECURE_SHIBBOLETH_ROOTPATH";
 		$webFolderName			= "medclas";
@@ -70,7 +70,7 @@ switch ($DEPLOYMENT_NAME) {
 		break;
 	case "educ":
 		$logoutURL              = "CUSTOMIZE_SECURE_SHIBBOLETH_LOGOUTPATH";
-		$serverVersion          = "CLAS_educ_server";
+		$serverVersion          = "OVAL_educ_server";
 		$configFolderName 		= "educ";
 		$applicationURL         = "CUSTOMIZE_SECURE_SHIBBOLETH_ROOTPATH";
 		$webFolderName			= "educ";

@@ -312,16 +312,16 @@ $(document).ready(function() {
     <?php else: ?>
     	<span style="font-size:14px;color:#e33">
     		<b>
-    			The video hosting service used by CLAS is under maintenance.
+    			The video hosting service used by OVAL is under maintenance.
     			<br>
-    			The CLAS application may be slow or down intermittently during the weekends.
+    			The OVAL application may be slow or down intermittently during the weekends.
     			<br>
     			Service will resume as normal on Monday. Thanks, An ZHAO @ UniSA.
     			<br>
     			<br>
     		</b>
     	</span>
-    	<span style="font-size:18px"><b>CLAS has been updated!</b></span>
+    	<span style="font-size:18px"><b>OVAL has been updated!</b></span>
     	<br>
 		&nbsp;&nbsp;&nbsp;
 		<span 	id="clas_search_demo_in_1_minute_link" 

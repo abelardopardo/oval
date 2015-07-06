@@ -49,7 +49,7 @@ function startKalturaSession() {
 	$client = new KalturaClient($kConfig);
 
 	writeToLog("startKalturaSession()");
-	$userID = "CLASAutomatedUploads";  // If this user does not exist in your KMC, then it will be created.
+	$userID = "OVALAutomatedUploads";  // If this user does not exist in your KMC, then it will be created.
 	//$sessionType = ($isAdmin)? KalturaSessionType::ADMIN : KalturaSessionType::USER; 
 	$sessionType = KalturaSessionType::ADMIN;
 	try

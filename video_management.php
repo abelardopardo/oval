@@ -1,6 +1,6 @@
 <?php
 /**
- *  CLAS (Collaborative Lecture Annotation System) is a video annotation tool 
+ *  OVAL (Online Video Annotation for Learning) is a video annotation tool
  *  that allows users to make annotations on videos uploaded to the platform.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
@@ -247,7 +247,7 @@ function confirmDelete(videoID) {
 
 function confirmAdd(videoID) {
    
-    if (confirm("You are adding the YouTube video(s) to CLAS ...")) {
+    if (confirm("You are adding the YouTube video(s) to OVAL ...")) {
          $.ajax({
             type: "POST",
             url: "ajax/add_video.php",
