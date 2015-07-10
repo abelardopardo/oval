@@ -6,7 +6,7 @@
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
  *  Copyright (C) 2014  An Zhao, University of South Australia, Australia
  *  Copyright (C) 2014  Dragan Gasevic, University of Edinburgh, United Kingdom
- *  Copyright (C) 2014  Neging Mirriahi, University of New South Wales, Australia
+ *  Copyright (C) 2014  Negin Mirriahi, University of New South Wales, Australia
  *  Copyright (C) 2014  Abelardo Pardo, University of Sydney, Australia
  *  Copyright (C) 2014  Alan Kingstone, University of British Columbia, Canada
  *  Copyright (C) 2014  Thomas Dang, , University of British Columbia, Canada

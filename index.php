@@ -8,7 +8,7 @@
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
  *  Copyright (C) 2014  An Zhao, University of South Australia, Australia
  *  Copyright (C) 2014  Dragan Gasevic, University of Edinburgh, United Kingdom
- *  Copyright (C) 2014  Neging Mirriahi, University of New South Wales, Australia
+ *  Copyright (C) 2014  Negin Mirriahi, University of New South Wales, Australia
  *  Copyright (C) 2014  Abelardo Pardo, University of Sydney, Australia
  *  Copyright (C) 2014  Alan Kingstone, University of British Columbia, Canada
  *  Copyright (C) 2014  Thomas Dang, , University of British Columbia, Canada
@@ -148,7 +148,7 @@ $users->close();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Collaborative Lecture Annotation System: video annotation tool</title>
+	<title>Online Video Annotation for Learning</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!-- Debug version: If using the debug version you can remove all the below js / css references --> 
   <!--  <script type="text/javascript" src="../mwEmbed.js" ></script>  -->
