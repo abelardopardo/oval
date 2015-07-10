@@ -1,7 +1,7 @@
 <?php 
 /**
  *  OVAL (Online Video Annotation for Learning) is a video annotation tool
- *  that allows users to make annotations on videos uploaded to the platform.
+ *  that allows users to make annotations on videos.
  *
  *  Copyright (C) 2014  Shane Dawson, University of South Australia, Australia
  *  Copyright (C) 2014  An Zhao, University of South Australia, Australia
