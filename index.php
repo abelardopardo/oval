@@ -12,6 +12,7 @@
  *  Copyright (C) 2014  Abelardo Pardo, University of Sydney, Australia
  *  Copyright (C) 2014  Alan Kingstone, University of British Columbia, Canada
  *  Copyright (C) 2014  Thomas Dang, , University of British Columbia, Canada
+ *  Copyright (C) 2014 John Bratlien, University of British Columbia, Canada 
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by 
